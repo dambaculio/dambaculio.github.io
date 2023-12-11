@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Payroll</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('bgphoto2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: "Arial", sans-serif;
+        }
+
+        #heading {
+        color: white;
+        font-weight: bold;
+        font-size: 60px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-family: "Lucida Handwriting", cursive;
+        animation: glow 1s ease-in-out infinite alternate;
+    }
+
+        @keyframes glow {
+            from {
+            text-shadow: 0 0 10px #c29eff, 0 0 20px #252e92, 0 0 30px #0051e6, 0 0 40px #2a00e6, 0 0 50px #e60086, 0 0 60px #8200e6, 0 0 70px #000fe6;
+            }
+            to {
+            text-shadow: 0 0 20px #ff7fd6, 0 0 30px #be4dff, 0 0 40px #9a4dff, 0 0 50px #ac4dff, 0 0 60px #a04dff, 0 0 70px #4d6eff, 0 0 80px #fc4dff;
+    }
+}
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        #h1 {
+            font-size: 20px;
+            font-weight: bold;
+            color:white;
+            text-align: center;
+        }
+        input {
+            display: block;
+            padding: 5px;
+            width: 393px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 2px solid white;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+        }
+
+        .container {
+            text-align: left;
+            display: inline-block;
+            margin-left: 50px;
+            justify-content: center;
+            background-color: black;
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        #payrollTable {
+            width: 60%;
+            border-collapse: collapse;
+            margin-right: 80px;
+            float: right;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #9c27b0;
+            color: white;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 0 10px #fff;
+            transition: box-shadow 0.1s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #7a008e;
+            box-shadow: 0 0 20px #fff, 0 0 40px #9c00cc, 0 0 80px #9c00cc;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse; 
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #9a00ce;
+            color: white; 
+            border: 2px solid white; 
+            padding: 5px; 
+            font-size: 17px;
+            text-align: right;
+        }
+
+        th:nth-child(1),
+        td:nth-child(1){
+            width: 4%;
+        }
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 8%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2),
+        th:nth-child(4),
+        td:nth-child(4),
+        th:nth-child(5),
+        td:nth-child(5),
+        th:nth-child(6),
+        td:nth-child(6),
+        th:nth-child(7),
+        td:nth-child(7) {
+            width: 17.6%;
+        }
+
+        #payrollBody td {
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            border: 2px solid white; 
+            padding: 8px; 
+            text-align: right; 
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .modal {
+            font-family: Goat;
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-content {
+            font: 35px;
+            border-radius: 75px;
+            background-color: black; 
+            margin: 15% auto;
+            padding: 15px;
+            border: 4px solid white;
+            width: 25%;
+            text-align: center;
+            color: white; 
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .modal-buttons {
+            margin: 5px;
+            display: center;
+            justify-content: space-between;
+        }
+
+        .modal-buttons button {
+            height: 30px;
+            margin: 5px 15px;
+            background-color: #9c27b0;
+            border: 1px solid white;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .modal-buttons button:hover {
+            background-color: #490d63;
+        }
+
+        .backbuttons {
+            padding: 5px 20px;
+            cursor: pointer;
+            background-color: #9c00cc;
+            border: 3px solid white;
+            border-radius: 7px;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 15px;
+            box-shadow: 0 0 10px #fff;
+            transition: box-shadow 0.1s ease-in-out;
+            margin-top: auto;
+        }
+
+        .backbuttons:hover {
+            background-color: #7a008e;
+            box-shadow: 0 0 20px #fff, 0 0 40px #9c00cc, 0 0 80px #9c00cc;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="heading">Simple Payroll</div>
+
+<div class="container">
+    <div id="h1"><h2>INFORMATION</h2></div>
+
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" style="text-align: right" oninput="capitalizeFirstLetter(this)">
+    <p id="employeeNameError" style="color: red; display: none;">Please enter a valid name.</p>
+
+    <label for="daysWorked">Days Worked:</label>
+    <input type="number" id="daysWorked" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <p id="daysWorkedError" style="color: red; display: none;">Please enter a valid number of days worked.</p>
+
+    <label for="dailyRate">Daily Rate:</label>
+    <input type="number" id="dailyRate" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <p id="dailyRateError" style="color: red; display: none;">Please enter a valid daily rate.</p>
+
+    <label for="deductionAmount">Deduction Amount:</label>
+    <input type="number" id="deductionAmount" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <p id="deductionAmountError" style="color: red; display: none;">Please enter a valid deduction amount.</p>
+
+    <button onclick="addEmployee()">Add Employee</button>
+    <button onclick="openDeleteEmployeeModal()">Delete Employee</button>
+    <button onclick="openConfirmationModal()">Clear All Employees</button>
+</div>
+
+<table id="payrollTable" border="1">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Employee Name</th>
+                <th>Days Worked</th>
+                <th>Daily Rate</th>
+                <th>Gross Pay</th>
+                <th>Deduction Amount</th>
+                <th>Net Pay</th>
+            </tr>
+        </thead>
+        <tbody id="payrollBody">
+        </tbody>
+    </table>
+
+    <div id="deleteEmployeeModal" class="modal">
+        <div class="modal-content">
+            <h2>DELETE EMPLOYEE</h2>
+            <p>Enter the number of the Employee</p>
+            <input type="number" id="deleteEmployeeInput" placeholder="Enter line number" dir="rtl">
+            <div class="modal-buttons">
+                <button onclick="confirmDeleteEmployee()">Delete</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure you want to clear the table?</h4>
+            <div class="modal-buttons">
+                <button onclick="clearAllEmployees()">Yes</button>
+                <button onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: left; margin-top: 40px; margin-left: 110px;">
+        <a href="index.html">
+            <button class="backbuttons">BACK TO MAIN</button>
+        </a>
+        <a href="homepage.html">
+            <button class="backbuttons">ASSIGNMENTS</button>
+        </a> 
+    </div>
+
+<script>
+    function capitalizeFirstLetter(input) {
+        input.value = input.value.charAt(0).toUpperCase() + input.value.slice(1);
+    }
+
+    function validateInput(input) {
+        const value = input.value;
+        const inputId = input.id;
+        const errorId = inputId + "Error";
+        const errorElement = document.getElementById(errorId);
+
+        if (value === '' || isNaN(value) || value <= 0) {
+            errorElement.style.display = 'block';
+        } else {
+            errorElement.style.display = 'none';
+        }
+    }
+    
+        let payrollList = [];
+    
+        function addEmployee() {
+const employeeName = document.getElementById("employeeName").value;
+const daysWorked = parseInt(document.getElementById("daysWorked").value);
+const dailyRate = parseFloat(document.getElementById("dailyRate").value).toFixed(2);
+const deductionAmount = parseFloat(document.getElementById("deductionAmount").value).toFixed(2);
+
+const grossPay = (daysWorked * dailyRate).toFixed(2);
+const netPay = (grossPay - deductionAmount).toFixed(2);
+
+const employee = {
+    employeeName,
+    daysWorked,
+    dailyRate,
+    grossPay,
+    deductionAmount,
+    netPay
+};
+
+document.getElementById("employeeName").value = "";
+document.getElementById("daysWorked").value = "";
+document.getElementById("dailyRate").value = "";
+document.getElementById("deductionAmount").value = "";
+
+payrollList.push(employee);
+displayPayroll();
+}
+    
+        function confirmDeleteEmployee() {
+            const lineNumber = parseInt(document.getElementById("deleteEmployeeInput").value) - 1;
+            if (lineNumber >= 0 && lineNumber < payrollList.length) {
+                payrollList.splice(lineNumber, 1);
+                closeModal();
+                displayPayroll();
+            } else {
+                alert("No employee deleted.");
+            }
+        }
+    
+        function clearAllEmployees() {
+            payrollList = [];
+            displayPayroll();
+            closeModal(); 
+        }
+    
+        function openDeleteEmployeeModal() {
+            const modal = document.getElementById('deleteEmployeeModal');
+            modal.style.display = 'block';
+        }
+    
+        function openConfirmationModal() {
+            const modal = document.getElementById('confirmationModal');
+            modal.style.display = 'block';
+        }
+    
+        function closeModal() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+    
+        function displayPayroll() {
+            const tableBody = document.getElementById("payrollBody");
+            tableBody.innerHTML = "";
+    
+            payrollList.forEach((employee, index) => {
+                const row = tableBody.insertRow();
+                const rowNum = row.insertCell(0);
+                const nameCell = row.insertCell(1);
+                const daysWorkedCell = row.insertCell(2);
+                const dailyRateCell = row.insertCell(3);
+                const grossPayCell = row.insertCell(4);
+                const deductionAmountCell = row.insertCell(5);
+                const netPayCell = row.insertCell(6);
+    
+                rowNum.innerHTML = index + 1;
+                nameCell.innerHTML = employee.employeeName;
+                daysWorkedCell.innerHTML = employee.daysWorked;
+                dailyRateCell.innerHTML = "\u20B1  " + employee.dailyRate;
+                grossPayCell.innerHTML = "\u20B1  " + employee.grossPay;
+                deductionAmountCell.innerHTML = "\u20B1  " + employee.deductionAmount;
+                netPayCell.innerHTML = "\u20B1  " + employee.netPay;
+            });
+        }
+    </script>
+</body>
+</html>

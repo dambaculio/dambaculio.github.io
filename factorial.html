@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FSA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('bgphoto2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: "Arial", sans-serif;
+        }
+
+        #heading {
+        color: white;
+        font-weight: bold;
+        font-size: 60px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-family: "Lucida Handwriting", cursive;
+        animation: glow 1s ease-in-out infinite alternate;
+    }
+
+        @keyframes glow {
+            from {
+            text-shadow: 0 0 10px #c29eff, 0 0 20px #252e92, 0 0 30px #0051e6, 0 0 40px #2a00e6, 0 0 50px #e60086, 0 0 60px #8200e6, 0 0 70px #000fe6;
+            }
+            to {
+            text-shadow: 0 0 20px #ff7fd6, 0 0 30px #be4dff, 0 0 40px #9a4dff, 0 0 50px #ac4dff, 0 0 60px #a04dff, 0 0 70px #4d6eff, 0 0 80px #fc4dff;
+            }
+    }
+        .calculator {
+            background-color: #000000;
+            border: 2px solid white;
+            width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(255, 250, 250, 0.1);
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            width: 85%;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 4px solid #7b1fa2;
+            border-radius: 15px;
+            font-size: 20px;
+            text-align: right;
+        }
+
+        button {
+            padding: 10px 40px;
+            background-color: #9c27b0;
+            color: white;
+            border: 1px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 0 10px #fff;
+            transition: box-shadow 0.1s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #7a008e;
+            box-shadow: 0 0 20px #fff, 0 0 40px #9c00cc, 0 0 80px #9c00cc;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            width: 85%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .backbuttons {
+            padding: 5px 20px;
+            cursor: pointer;
+            background-color: #9c00cc;
+            border: 3px solid white;
+            border-radius: 7px;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 15px;
+            box-shadow: 0 0 10px #fff;
+            transition: box-shadow 0.1s ease-in-out;
+            margin-top: auto;
+        }
+
+        .backbuttons:hover {
+            background-color: #7a008e;
+            box-shadow: 0 0 20px #fff, 0 0 40px #9c00cc, 0 0 80px #9c00cc;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="heading">
+        <header>Nth Facotrial, Sum, and Average</header>
+    </div>
+    <div class="calculator">
+        <label for="numberInput">Enter an integer number:</label>
+        <br>
+        <input type="number" id="numberInput" style="text-align: right">
+        <button id="calculateFsa">Calculate</button>
+        <button id="clearButton">Clear</button>
+
+        <div id="output">
+            <p id="factorialResult"></p>
+            <p id="sumResult"></p>
+            <p id="averageResult"></p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="index.html">
+            <button class="backbuttons">BACK TO MAIN</button>
+        </a>
+        <a href="homepage.html">
+            <button class="backbuttons">ASSIGNMENTS</button>
+        </a> 
+    </div>
+
+    <script>
+        document.getElementById('calculateFsa').addEventListener('click', calculateFsa);
+        document.getElementById('clearButton').addEventListener('click', clear);
+
+        function calculateFsa() {
+            const number = parseInt(document.getElementById('numberInput').value);
+
+            let factorial = 1;
+            let i = 1;
+            while (i <= number) {
+                factorial *= i;
+                i++;
+            }
+            document.getElementById('factorialResult').innerText = `Factorial: ${factorial}`;
+
+            let sum = 0;
+            let j = 1;
+            do {
+                sum += j;
+                j++;
+            } while (j <= number);
+            document.getElementById('sumResult').innerText = `Sum: ${sum}`;
+
+            let total = 0;
+            for (let k = 1; k <= number; k++) {
+                total += k;
+            }
+            const average = total / number;
+            document.getElementById('averageResult').innerText = `Average: ${average}`;
+        }
+
+        function clear() {
+            document.getElementById('numberInput').value = '';
+            document.getElementById('factorialResult').innerText = '';
+            document.getElementById('sumResult').innerText = '';
+            document.getElementById('averageResult').innerText = '';
+        }
+    </script>
+</body>
+</html>

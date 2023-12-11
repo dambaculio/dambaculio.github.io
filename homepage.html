@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignments</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('bgphoto2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #background {
+            display: flex;
+            justify-content: center;
+        }
+
+        #heading {
+        color: white;
+        font-weight: bold;
+        font-size: 70px;
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 20px;
+        font-family: "Arial", sans-serif;
+        animation: glow 1s ease-in-out infinite alternate;
+    }
+
+        @keyframes glow {
+            from {
+            text-shadow: 0 0 10px #c29eff, 0 0 20px #252e92, 0 0 30px #0051e6, 0 0 40px #2a00e6, 0 0 50px #e60086, 0 0 60px #8200e6, 0 0 70px #000fe6;
+            }
+            to {
+            text-shadow: 0 0 20px #ff7fd6, 0 0 30px #be4dff, 0 0 40px #9a4dff, 0 0 50px #ac4dff, 0 0 60px #a04dff, 0 0 70px #4d6eff, 0 0 80px #fc4dff;
+    }
+}
+
+        .custom-image-2,
+        .custom-image {
+            width: 300px;
+            height: 300px;
+            margin-left: 50px;
+            margin-top: 50px;
+            transition: transform 0.3s ease-in-out; 
+        }
+
+        .custom-image-2:hover,
+        .custom-image:hover {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+            text-align: center;
+            margin-bottom: auto;
+            width: 100%;
+        }
+
+        .button {
+            background-color: #000000;
+            border: 2px solid #FFFFFF;
+            color: #FFFFFF;
+            padding: 5px 5px;
+            text-align: center;
+            text-decoration: none; 
+            width: 300px;
+            height: 30px; 
+            font-size: 16px;
+            font-family: "Arial", sans-serif;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer; 
+            line-height: 30px;
+            margin: 0;
+            box-shadow: 0 0 10px #fff;
+            transition: box-shadow 0.1s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #9c00cc;
+            box-shadow: 0 0 20px #fff, 0 0 40px #9c00cc, 0 0 80px #9c00cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="heading"><header>CS-1130 | WEBSITE ASSIGNMENT</header></div>
+   <div id="background">
+        <a href="conversion.html">
+            <img src="conversion.png" alt="Conversion" class="custom-image"></a>
+        <a href="income-tax-calculator.html">
+            <img src="incometaxcaluclator.png" alt="Income tax Calculator" class="custom-image-2"></a>
+        <a href="factorial.html">
+            <img src="factorial.png" alt="Factorial" class="custom-image-2"></a>
+        <a href="simplepayroll.html">
+            <img src="simplepayroll.png" alt="Simple Payroll" class="custom-image-2"></a>
+    </div>
+    <div class="button-container">
+        <a href="index.html" class="button">GO BACK</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Introduction to Computing</title>
+    <style>
+       body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #000 0%, #1b0325 25%, #000 50%, #4B0082 75%, #000 100%);
+    background-size: 500% 100%; 
+    animation: backgroundTransition 10s linear infinite;
+}
+
+    @keyframes backgroundTransition {
+    0% {
+        background-position: 0% 50%; 
+    }
+    100% {
+        background-position: 100% 50%; 
+    }
+    }
+        
+        #heading {  
+            color: #FFFFFF; 
+            grid-row: 1;
+            text-align: center;
+            font-size: 60px;
+            font-family: "Helvetica", sans-serif;
+            font-weight: bold;
+            margin-top: 75px;
+        }
+        
+        #heading:hover {
+            color: #e799ff;
+        }
+
+        #description {
+            color: #FFFFFF;
+            grid-row: 2;
+            text-align: center;
+            margin-top: 0px;
+            font-size: 10px;
+            font-family: "Lucida Handwriting", cursive;
+            font-weight: normal;
+        }
+        
+        #description:hover {
+            color: #e799ff;}
+
+        #description2 {
+            color: #FFFFFF;
+            text-align: center;
+            grid-row: 3;
+            margin-top: 0px;
+            font-size: 10px;
+            font-family: "Lucida Handwriting", cursive;
+            font-weight: normal;
+        }
+         #description2:hover {
+            color: #e799ff;}
+
+        #description3 {
+            color: #FFFFFF;
+            text-align: center;
+            grid-row: 4;
+            margin-top: 0px;
+            margin-bottom: 5px;
+            font-size:20px;
+            font-family: "Arial", sans-serif;
+            font-weight: normal;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            text-align:center;
+            margin-bottom:auto;
+        }
+
+        .button {
+            background-color: #000000;
+            border: 2px solid #FFFFFF;
+            color: #FFFFFF;
+            padding: 5px 5px;
+            text-align: center;
+            text-decoration: none; 
+            width: 120px;
+            height: 30px; 
+            font-size: 16px;
+            font-family: "Arial", sans-serif;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer; 
+            line-height: 30px;
+            margin:0;
+            box-shadow: 0 0 10px #fff;
+            transition: box-shadow 0.1s ease-in-out; 
+        }
+
+        .button:hover {
+            background-color: #9c00cc;
+            box-shadow: 0 0 20px #fff, 0 0 40px #9c00cc, 0 0 80px #9c00cc;
+        }
+    </style>
+</head>
+<body>
+    <div id="heading"><header>INTRODUCTION TO COMPUTING ASSIGNMENTS</header></div>
+    <div id="description"><h2>Submitted by: Dreame Adelaine M. Baculio</h2></div>
+    <div id="description2"><h2>Submitted to: Mr. John Roy Geralde</h2></div>
+    <div id="description3"><p>____________________________________________________________________________________________</p>
+                            <p>Assignment #1 - Conversion (Celsius to Fahrenheit,</p>
+                            <p>to Celsius, Meters to Feet, Feet to Meters)</p>
+                            <p>Assignment #2 - Income Tax Calculator</p>
+                            <p>Assignment #3 - Factorial (While Loop),</p>
+                            <p>Sum (Do While Loop) and Average (For Loop)</p>
+                            <p>of First N Natural Numbers</p>
+                            <p>Assignment #4 - Simple Payroll</p>
+                        </div>
+    <div class="button-container">
+        <a href="homepage.html" class="button">GET STARTED</a>
+
+    </div>
+</body>
+</html>
